@@ -1,0 +1,302 @@
+@import "tailwindcss";
+
+:root {
+  /* PivotPrice Pink Theme */
+  --pink-50: #fdf2f8;
+  --pink-100: #fce7f3;
+  --pink-200: #fbcfe8;
+  --pink-300: #f9a8d4;
+  --pink-400: #f472b6;
+  --pink-500: #ec4899;
+  --pink-600: #db2777;
+  --pink-700: #be185d;
+  --pink-800: #9d174d;
+  --pink-900: #831843;
+  
+  /* Complementary Colors */
+  --coral-500: #ff6b6b;
+  --coral-600: #ee5a52;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --rose-500: #f43f5e;
+  --rose-600: #e11d48;
+  
+  /* Neutral Colors */
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --slate-950: #020617;
+  
+  /* Theme Variables */
+  --background: #ffffff;
+  --foreground: var(--slate-900);
+  --primary: var(--pink-500);
+  --primary-hover: var(--pink-600);
+  --primary-light: var(--pink-100);
+  --secondary: var(--purple-500);
+  --accent: var(--coral-500);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-sora);
+  --font-display: var(--font-clash);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--slate-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pink-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pink-400);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sora, system-ui, sans-serif);
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-clash, var(--font-sora, system-ui, sans-serif));
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Animated Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--pink-500) 0%, var(--purple-500) 50%, var(--coral-500) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Button Styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--pink-500) 0%, var(--pink-600) 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px 0 rgba(236, 72, 153, 0.39);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(236, 72, 153, 0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--slate-800);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  border: 2px solid var(--pink-200);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--pink-400);
+  background: var(--pink-50);
+}
+
+/* Card Styles */
+.card {
+  background: white;
+  border-radius: 1.5rem;
+  border: 1px solid var(--slate-200);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(236, 72, 153, 0.2);
+  border-color: var(--pink-200);
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Animated Background */
+.animated-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+              radial-gradient(circle at 80% 30%, rgba(255, 107, 107, 0.05) 0%, transparent 50%);
+  animation: float 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -50px) rotate(5deg); }
+  66% { transform: translate(-20px, 20px) rotate(-5deg); }
+}
+
+/* Dot Grid Pattern */
+.dot-pattern {
+  background-image: radial-gradient(circle, var(--pink-200) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Mesh Gradient */
+.mesh-gradient {
+  background: 
+    linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+    linear-gradient(225deg, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+    linear-gradient(315deg, rgba(255, 107, 107, 0.08) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(244, 63, 94, 0.05) 0%, transparent 50%);
+}
+
+/* Floating Animation */
+.float-animation {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Pulse Glow */
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
+  }
+}
+
+/* Shine Effect */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Price Card Animation */
+.price-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.price-card:hover {
+  transform: scale(1.02);
+}
+
+/* Tab Styles */
+.tab-active {
+  background: linear-gradient(135deg, var(--pink-500) 0%, var(--pink-600) 100%);
+  color: white;
+}
+
+/* Marquee */
+.animate-marquee {
+  display: flex;
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Input Focus */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--pink-400);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+}
+
+/* Selection */
+::selection {
+  background: var(--pink-200);
+  color: var(--pink-900);
+}
+
+/* Link hover */
+a {
+  transition: color 0.2s ease;
+}
